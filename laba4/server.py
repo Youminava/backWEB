@@ -330,7 +330,7 @@ def render_success(user_id: int) -> bytes:
   <div class="form-container">
     <h1>Данные успешно отправлены!</h1>
     <p style="color:#a0a0b0;margin-bottom:24px">Ваш ID заявки: <strong>{user_id}</strong></p>
-    <a href="/" class="btn-save" style="text-align:center;display:block;text-decoration:none">← На главную</a>
+    <a href="/laba4" class="btn-save" style="text-align:center;display:block;text-decoration:none">← На главную</a>
   </div>
 </body>
 </html>"""
@@ -419,7 +419,7 @@ class Handler(BaseHTTPRequestHandler):
             # Ошибки: сохраняем значения и ошибки в сессионных Cookies,
             # затем перенаправляем GET на форму
             self.send_response(302)
-            self.send_header("Location", "/")
+            self.send_header("Location", "/laba4")
             # Сессионные Cookies с введёнными значениями
             for key, val in values_cookies.items():
                 self.send_header("Set-Cookie", f"{key}={quote(val)}; Path=/")
@@ -468,7 +468,7 @@ class Handler(BaseHTTPRequestHandler):
 # ─── ЗАПУСК ──────────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
-    server = HTTPServer(("0.0.0.0", 8080), Handler)
-    print("Сервер запущен: http://localhost:8080")
+    server = HTTPServer(("0.0.0.0", 8081), Handler)
+    print("Сервер запущен: http://localhost:8081")
     server.serve_forever()
 
